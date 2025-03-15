@@ -9,7 +9,7 @@ pipeline {
                     reuseNode true
                 }
             }
-            steps('AWS')
+            stage('AWS')
             agent {
                 docker {
                     image 'amazon/aws-cli'
@@ -20,6 +20,9 @@ pipeline {
                     aws --version
                 '''
             }
+        }
+    }
+}
 
             /*
             steps {
