@@ -9,16 +9,17 @@ pipeline {
                     reuseNode true
                 }
             }
-            stage('AWS')
-            agent {
-                docker {
-                    image 'amazon/aws-cli'
-                }
-            }
+            stage('AWS') {
+                agent {
+                    docker {
+                        image 'amazon/aws-cli'
+                    }
+             }
             steps {
                 sh '''
                     aws --version
                 '''
+             }
             }
         }
     }
