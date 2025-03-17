@@ -12,9 +12,19 @@ pipeline {
             steps {
                 sh '''
                     aws --version
-                    aws s3 ls
                 '''
              }
+            }
+            stage('Example') {
+                steps {
+                    withCredentials([
+                        conjurSecretCredential(credentialsId: 'aws-credentials', variable: 'aws-access-key-id')
+                    ]) {
+                        script {
+                            echo "My secret is: ${env.MY_SECRET}"
+                        }
+                    }
+                }
             }
         }
     }
