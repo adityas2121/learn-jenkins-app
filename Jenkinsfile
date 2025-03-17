@@ -18,10 +18,10 @@ pipeline {
             stage('Conjur') {
                 steps {
                     withCredentials([
-                        conjurSecretCredential(credentialsId: 'aws-credentials/aws-access-key-id', variable: 'MY_SECRET')
+                        conjurSecretCredential(credentialsId: 'aws-credentials/aws-access-key-id', variable: 'MY_SECRET1')
                     ]) {
                         script {
-                            echo "My secret is: $\$MY_SECRET"
+                            echo "My secret is: $\$MY_SECRET1"
                         }
                     }
                 }
